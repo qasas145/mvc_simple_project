@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-// using firstApp.Data;
 using firstApp.Models;
 
 namespace firstApp.Controllers

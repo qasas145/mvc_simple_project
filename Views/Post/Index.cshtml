@@ -1,0 +1,69 @@
+@model IEnumerable<firstApp.Models.Post>
+
+@{
+    ViewData["Title"] = "Posts";
+}
+
+<h1>Posts</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <div class="post p-2" style="border: 1px solid rgb(209, 208, 208); display: flex;flex-direction:column;justify-content: center;align-items:center" id="post-@item.Id">
+        <div class="post-content">
+            
+            <p class="post-text text-center" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 20px; color: rgb(39, 39, 39);">@item.Content</p>
+            <img src="@item.Image" alt="Post Image" class="post-image">
+        </div>
+        <div class="post-actions mt-2">
+            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
+            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+        </div>
+        <div class="comments-section" id="comments-section-@item.Id">
+        </div>
+    </div>
+        }
+    </tbody>
+</table>
+
+
+@* 
+@model IEnumerable<firstApp.Models.Post>
+
+@{
+    ViewData["Title"] = "Posts";
+}
+
+<h1>Posts</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+@foreach (var item in Model)
+{
+    <div class="post" id="post-@item.Id">
+        <div class="post-content">
+            <img src="@item.Image" alt="Post Image" class="post-image">
+            <p class="post-text">@item.Content</p>
+        </div>
+        <div class="post-actions">
+            <button class="like-btn" onclick="likePost(@item.Id)">Like (<span id="like-count-@item.Id">@item.Likes</span>)</button>
+            <button class="comment-btn" onclick="commentPost(@item.Id)">Comment</button>
+            <button class="share-btn" onclick="sharePost(@item.Id)">Share (<span id="share-count-@item.Id">@item.Shares</span>)</button>
+        </div>
+        <div class="comments-section" id="comments-section-@item.Id">
+            <!-- Comments will be loaded here -->
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/js/func.js"></script>
+
+}
+ *@
